@@ -25,7 +25,7 @@ main:
         j loop
 
 loop:
-        ble $t2, $t0, printFactorial
+        bgt $t2, $t0, printFactorial
 
         mult $t2, $t1
         mflo $t1
