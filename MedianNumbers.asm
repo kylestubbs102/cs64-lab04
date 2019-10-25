@@ -59,23 +59,35 @@ bLessThanC2:
         blt $t1, $t2, printC
         j printB
 
-
 printA:
+        la $v0, 4
+        la $a0, median
+        syscall
+
         li $v0, 1
         move $a0, $t0
         syscall
         j exit
 
 printB:
+        la $v0, 4
+        la $a0, median
+        syscall
+
         li $v0, 1
         move $a0, $t1
         syscall
         j exit
 
 printC:
+        la $v0, 4
+        la $a0, median
+        syscall
+
         li $v0, 1
         move $a0, $t2
         syscall
+
 
 
 exit:
