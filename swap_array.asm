@@ -182,5 +182,37 @@ doSwap:
 
         # TODO: fill in the code
 
+        li $t0, 0 #x
+        li $t1, 32 #y
+        la $t2, myArray #the array
+
+doSwapLoop:
+
+        li $t3, 4 #just a variable to store 4 to end the loop
+
+        beq $t0, $t3, doSwapExit #ends if x == 4
+
+        sll $t4, $t0, 2 #used as an increment to shift each array
+
+        add $t5, $t2, $t4 #first array shifted to right
+        sub $t6, $t2, $t4 #second array shifted to left
+
+        lw $t3, 0($t5)
+        li $t7, 0
+        lw $t7, 32($t6) #creates variables to swap
+
+        sw $t3, 32($t6)
+        sw $t7, 0($t5) #actually swaps the variables
+
+        addiu $t0, $t0, 1
+        addiu $t1, $t1, -1 #takes care of the increments
+
+        j doSwapLoop #restarts the loop
+
+doSwapExit:
+        li $v0, 1
+        jr $ra #ends the loop
+
+
         # do not remove this last line
         jr $ra
